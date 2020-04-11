@@ -338,3 +338,36 @@ jQuery(document).ready(function($) {
 	});
 
 });
+
+
+
+//FRAQ
+
+function myFraq1() {
+	var faq1 = document.getElementById("faq1");
+
+	if (faq1.style.display === "none") {
+		faq1.style.display = "block";
+	} else {
+		faq1.style.display = "none";
+	}
+  }
+
+  function myFraq2() {
+	var faq2 = document.getElementById("faq2");
+
+	if (faq2.style.display === "none") {
+		faq2.style.display = "block";
+	} else {
+		faq2.style.display = "none";
+	}
+  }
+  function myFraq3() {
+	var faq3 = document.getElementById("faq3");
+	
+	if (faq3.style.display === "none") {
+		faq3.style.display = "block";
+	} else {
+		faq3.style.display = "none";
+	}
+  }
