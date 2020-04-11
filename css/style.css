@@ -1650,3 +1650,26 @@ h1, h2, h3, h4, h5,
   .testimony-39291 .text span {
     font-size: 14px;
     color: #ccc; }
+
+/*Abouit us page*/
+
+.image_center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-radius: 50%;
+  border-style: solid;
+  border-color:fff;
+}
+.team_member{
+  background-color: #d4ebf2;
+  border: 2px solid ccc;
+  padding: 10px;
+  border-radius: 50px 20px;
+}
+
+.btn_center{
+    margin-left: 85px;
+}
+
