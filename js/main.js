@@ -296,26 +296,105 @@ jQuery(document).ready(function($) {
 	siteSticky();
 
 	// navigation
+  // Global flag to prevent scroll detection from interfering during programmatic scrolling
+  window.navIsScrolling = false;
+  
   var OnePageNavigation = function() {
     var navToggler = $('.site-menu-toggle');
    	$("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
       e.preventDefault();
 
       var hash = this.hash;
+      var $target = $(hash);
+      var $clickedLi = $(this).closest('li');
+      
+      if ($target.length) {
+        // Set flag immediately to prevent scroll detection interference
+        window.navIsScrolling = true;
+        
+        // Remove active class from all nav links (li only, not a tags)
+        $('.main-menu li').removeClass('active');
+        $('.main-menu li a').removeClass('active');
+        
+        // Add active class to clicked nav link's parent li immediately (NOT the a tag)
+        $clickedLi.addClass('active');
 
-      $('html, body').animate({
-        'scrollTop': $(hash).offset().top
-      }, 600, 'easeInOutCirc', function(){
-        window.location.hash = hash;
-      });
+        // Find the span with footerTextColor class (the text above the heading)
+        var $span = $target.find('span.footerTextColor').first();
+        
+        // If no span found, try to find the heading (h3, h2, or h1) as fallback
+        var $heading = $span.length ? null : $target.find('h3, h2, h1').first();
+        
+        // Use span if found, otherwise heading, otherwise the target element itself
+        var $scrollTarget = $span.length ? $span : ($heading.length ? $heading : $target);
+        
+        // Calculate scroll position: span position minus navbar height, plus a few pixels above
+        var navbarHeight = $('.site-navbar').outerHeight() || 100;
+        var extraOffset = 30; // A few pixels above the span
+        var scrollPosition = $scrollTarget.offset().top - navbarHeight - extraOffset;
+
+        $('html, body').animate({
+          'scrollTop': scrollPosition
+        }, 600, 'easeInOutCirc', function(){
+          // Update URL hash without triggering browser scroll
+          if (history.replaceState) {
+            history.replaceState(null, null, hash);
+          } else {
+            window.location.hash = hash;
+            // Force scroll position back if browser jumped
+            $('html, body').scrollTop(scrollPosition);
+          }
+          
+          // Ensure active state is maintained after scroll completes (li only)
+          $('.main-menu li').removeClass('active');
+          $clickedLi.addClass('active');
+		  $('.main-menu li a').removeClass('active');
+          
+          // Reset flag after scroll completes and a longer delay to prevent interference
+          setTimeout(function() {
+            window.navIsScrolling = false;
+          }, 400);
+        });
+      }
 
     });
   };
-//   OnePageNavigation();
+  OnePageNavigation();
+  
+  // Handle Home link click
+  $("body").on("click", ".main-menu li a[href='index.html']", function(e) {
+    // If already on index.html, scroll to top and set active
+    if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+      e.preventDefault();
+      $('.main-menu li').removeClass('active');
+      $('.main-menu li a').removeClass('active');
+      $(this).closest('li').addClass('active');
+      
+      $('html, body').animate({
+        'scrollTop': 0
+      }, 600, 'easeInOutCirc', function(){
+        window.location.hash = '';
+      });
+    }
+  });
+  
+  // Set initial active state based on URL hash
+  var setInitialActiveState = function() {
+    var hash = window.location.hash;
+    if (hash) {
+      $('.main-menu li').removeClass('active');
+      $('.main-menu li a').removeClass('active');
+      $('.main-menu li a[href="' + hash + '"]').closest('li').addClass('active');
+    } else {
+      // If no hash, set Home as active
+      $('.main-menu li').removeClass('active');
+      $('.main-menu li a').removeClass('active');
+      $('.main-menu li a[href="index.html"]').closest('li').addClass('active');
+    }
+  };
+  setInitialActiveState();
 
   var siteScroll = function() {
-
-  	
 
   	$(window).scroll(function() {
 
@@ -325,6 +404,39 @@ jQuery(document).ready(function($) {
   			$('.js-sticky-header').addClass('shrink');
   		} else {
   			$('.js-sticky-header').removeClass('shrink');
+  		}
+
+  		// Update active nav link based on scroll position
+  		// Skip if we're in the middle of a programmatic scroll
+  		if (window.navIsScrolling) {
+  			return;
+  		}
+  		
+  		var scrollPos = st + 150; // Offset for better detection
+  		
+  		$('.main-menu li a[href^="#"]').each(function() {
+  			var currLink = $(this);
+  			var refElement = $(currLink.attr("href"));
+  			
+  			if (refElement.length) {
+  				var elementTop = refElement.offset().top;
+  				var elementBottom = elementTop + refElement.outerHeight();
+  				
+  				if (elementTop <= scrollPos && elementBottom > scrollPos) {
+  					// Remove active from all
+  					$('.main-menu li').removeClass('active');
+  					$('.main-menu li a').removeClass('active');
+  					// Add active to current li only
+  					currLink.closest('li').addClass('active');
+  				}
+  			}
+  		});
+  		
+  		// Handle home link (index.html) - if scrolled to top
+  		if (st < 100) {
+  			$('.main-menu li').removeClass('active');
+  			$('.main-menu li a').removeClass('active');
+  			$('.main-menu li a[href="index.html"]').closest('li').addClass('active');
   		}
 
   	}) 
@@ -338,7 +450,6 @@ jQuery(document).ready(function($) {
 	});
 
 });
-
 
 
 //FRAQ

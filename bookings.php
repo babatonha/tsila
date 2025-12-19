@@ -4,17 +4,19 @@
 composeMail();
 
     function composeMail(){
-        $fullname =  $_POST['fullname'];
+      $service = $_POST['service'];
+        $firstname =  $_POST['firstname'];
+        $lastname =  $_POST['lastname'];
         $numberOfPeople = $_POST['numberOfPeople'];
         $dateFrom = $_POST['dateFrom'];
         $dateTo = $_POST['dateTo'];
-        $service = $_POST['service'];
         $email = $_POST['emailAddress'];
         $phone = $_POST['phone'];
         $notes = $_POST['notes'];
 
         $message = "Customer Details:\r\n\r\n";
-        $message .= "Name: " . $fullname . "\r\n";
+        $message .= "First Name: " . $firstname . "\r\n";
+        $message .= "Last Name: " . $lastname . "\r\n";
         $message .= "Cell: " . $phone . "\r\n";
       
 
@@ -28,16 +30,16 @@ composeMail();
         $message .= "Other Details:\r\n\r\n";
         $message .= "Additional Notes: " . $notes . "\r\n";
 
-        $subject = "Order from <" . $fullname . "> via website";
-        $headers = "From: ".$fullname. " <" . $email . ">" ."\r\n";
-        $headers .= "Reply-To: " . $fullname . " <" . $email . ">" . "\r\n";
+        $subject = "Booking from <" . $email . "> via website";
+        $headers = "From: ".$firstname. " <" . $email . ">" ."\r\n";
+        $headers .= "Reply-To: " . $firstname . " <" . $email . ">" . "\r\n";
         $headers .= "Date: " . date("r")."\r\n";
 
         sendMail($subject, $message, $headers);
     }
 
     function sendMail($subject, $message, $headers){
-        $to = "bookings@tsila.com";
+        $to = "info@tsilatourstransfers.com";
         $theSubject = $subject;
         $theheaders = $headers;
         $theMessage = $message;
@@ -62,7 +64,7 @@ composeMail();
 <html lang="en">
 
 <head>
-  <title>Tsila &mdash; Confirm Booking</title>
+  <title>Tsila &mdash; Confirm Charter Booking</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -106,62 +108,63 @@ composeMail();
 
 
     
-    <div class="header-top bg-light">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-6 col-lg-3">
-              <a href="index.html">
-                <!--   <img src="images/logo.png" alt="Image" class="img-fluid">-->
-                <!-- <strong>Water</strong>Boat -->
-              </a>
-            </div>
-            <div class="col-lg-3 d-none d-lg-block">
-  
-              <div class="quick-contact-icons d-flex">
-                <div class="icon align-self-start">
-                  <span class="icon-location-arrow text-primary"></span>
-                </div>
-                <div class="text">
-                  <span class="h4 d-block">Cape Town</span>
-                  <span class="caption-text">P.O Box, 45 Waterfront, CA</span>
-                </div>
+     <div class="header-top bg-light">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-6 col-lg-3">
+            <a href="index.html">
+              <img src="images/logo.png" alt="Image" class="img-fluid"> 
+              <!--
+              <strong style="color:#CC5500;">YOUR AFRICAN SUPER HOST!</strong>-->
+            </a>
+          </div>
+         
+          <div class="col-lg-3 d-none d-lg-block">
+            <div class="quick-contact-icons d-flex">
+              <div class=" align-self-start"> <!--class icon removed-->
+                  <!-- <span class="icon-location-arrow footerTextColor"></span>-->
               </div>
-  
-            </div>
-            <div class="col-lg-3 d-none d-lg-block">
-              <div class="quick-contact-icons d-flex">
-                <div class="icon align-self-start">
-                  <span class="icon-phone text-primary"></span>
-                </div>
-                <div class="text">
-                  <span class="h4 d-block">000 209 392 312</span>
-                  <span class="caption-text">Toll free</span>
-                </div>
+              <div class="text">
+                  <!-- <span class="h4 d-block">Cape Town</span>-->
+                  <!-- <span class="caption-text">Main offices</span>-->
               </div>
-            </div>
-  
-            <div class="col-lg-3 d-none d-lg-block">
-              <div class="quick-contact-icons d-flex">
-                <div class="icon align-self-start">
-                  <span class="icon-envelope text-primary"></span>
-                </div>
-                <div class="text">
-                  <span class="h4 d-block">info@tsila.com</span>
-                  <span class="caption-text">Email any time</span>
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-6 d-block d-lg-none text-right">
-                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                  class="icon-menu h3"></span></a>
             </div>
           </div>
+
+          <div class="col-lg-3 d-none d-lg-block">
+            <div class="quick-contact-icons d-flex">
+              <div class="icon align-self-start">
+                <span class="icon-phone footerTextColor"></span>
+              </div>
+              <div class="text">
+                <span class="h4 d-block">+263 71 274 9532</span>
+                <span class="caption-text">Call us</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 d-none d-lg-block">
+            <div class="quick-contact-icons d-flex">
+              <div class="icon align-self-start">
+                <span class="icon-envelope footerTextColor"></span>
+              </div>
+              <div class="text">
+                <span class="h4 d-block">info@tsilatourstransfers.com</span>
+                <span class="caption-text">Email any time</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 d-block d-lg-none text-right">
+              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                class="icon-menu h3"></span></a>
+          </div>
         </div>
-        
-  
-  
-              
+      </div>
+      
+
+
+         
       <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
 
         <div class="container">
@@ -181,17 +184,18 @@ composeMail();
                     <a href="transfers.html" class="nav-link text-left">Transfers</a>
                   </li>
 
-                  <li >
+                  <li class="active">
                     <a href="charters.html" class="nav-link text-left">Charters</a>
                   </li>
                 <!-- <li><a href="gallery.html" class="nav-link text-left">Gallery</a></li> --> 
                 <li>
                   <a href="about.html" class="nav-link text-left">About Us</a>
                 </li>
-                  <li class="active">
+                  <li>
                       <a href="contact.html" class="nav-link text-left">Contact</a>
                   </li>
-                </ul>                                                                                                                                                                                                                                                                                          </ul>
+                </ul>                                                       
+                
               </nav>
   
             </div>
@@ -200,26 +204,23 @@ composeMail();
         </div>
 
     </div>
-      
-      </div>
+    
+    </div>
     
 
 
 
-    <div class="intro-section site-blocks-cover innerpage" style="background-image: url('images/hero_1.jpg');">
-      <div class="container">
-        <div class="row align-items-center text-center border">
-          <div class="col-lg-12 mt-5" data-aos="fade-up">
-            <h1>Get In Touch</h1>
-            <p class="text-white text-center">
-              <a href="index.html">Home</a>
-              <span class="mx-2">/</span>
-              <span>Contact Us</span>
-            </p>
+     <div class="intro-section innerpage" style="background-image: url('images/vicfallsheader.jpg');">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-7 mx-auto text-center" data-aos="fade-up">
+              <h1>Bookings</h1>
+              <p>For any of your travel needs and your host will get back to you within 24 hour.</p>
+              <p><a href="contact.html" class="btn btnColor py-3 px-5">Contact</a></p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
     
 
@@ -230,19 +231,24 @@ composeMail();
 
 
 
-
+<div class="container">
     <div class="news-wrap">
         <div class="container">
             <div class="container">
-                <h2>Order Sent!</h2>
+                <br>
+                <br>
+                <h2>Your Charter booking information has been successfully submitted !</h2>
                 <div class="row">
                 <?php
                     echo $GLOBALS['result'];
                 ?>
                 </div>
+                <br>
+                <br>
             </div>
         </div>
     </div>
+ </div>
 
 
 
@@ -253,51 +259,50 @@ composeMail();
 
 
 
-      <div class="footer bg-light">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3">
-                 <!-- <p class="mb-4"><img src="images/logo.png" alt="Image" class="img-fluid"></p>-->
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>  
-                <p><a href="#">Learn More</a></p>
-              </div>
-              <div class="col-lg-3">
-                <h3 class="footer-heading"><span>Our Company</span></h3>
-                <ul class="list-unstyled">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Our Team</a></li>
-                </ul>
-              </div>
-              <div class="col-lg-3">
-                  <h3 class="footer-heading"><span>Our Services</span></h3>
-                  <ul class="list-unstyled">
-                      <li><a href="#">Transport</a></li>
-                      <li><a href="#">Accomodation</a></li>
-                      <li><a href="#">Tour guides</a></li>
-                  </ul>
-              </div>
-              <div class="col-lg-3">
-                  <h3 class="footer-heading"><span>Contact</span></h3>
-                  <ul class="list-unstyled">
-                      <li><a href="#">Help Center</a></li>
-                      <li><a href="#">Support Community</a></li>
-                      <li><a href="#">Press</a></li>
-                  </ul>
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col-12">
-                <div class="copyright">
-                    <p>
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </a>
-                        </p>
-                </div>
-              </div>
+  <div class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+              <p class="mb-4"><img src="images/logo.png" alt="Image" class="img-fluid"></p>
+            <p>For any of your travel needs and your host will get back to you within 24 hours.</p>  
+            <p><a class="footerTextColor" href="transfers.html">More Details</a></p>
+          </div>
+          <div class="col-lg-3">
+            <h3 class="footer-heading"><span>Our Company</span></h3>
+            <ul class="list-unstyled">
+                <li><a class="footerTextColor" href="about.html">About</a></li>
+                <li><a class="footerTextColor" href="transfers.html">Services</a></li>
+                <li><a class="footerTextColor" href="about.html">Our Team</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Our Services</span></h3>
+              <ul class="list-unstyled">
+                  <li><a class="footerTextColor" href="freetour.html">Free walking Tours</a></li>
+                  <li><a class="footerTextColor" href="transfers.html">Transfers</a></li>
+                  <li><a class="footerTextColor" href="charters.html">Charters</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Contact</span></h3>
+              <ul class="list-unstyled ">
+                  <li><a class="footerTextColor"  href="contact.html">Help Center</a></li>
+             
+              </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="copyright">
+                <p>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </a>
+                    </p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
     
 
   </div>
