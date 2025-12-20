@@ -50,8 +50,8 @@
 
 
          
-      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-         <div class="container">
+        <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner" >
+          <div class="container">
             <div class="d-flex align-items-center">
               <div class="mx-auto">
                 <nav
@@ -62,42 +62,41 @@
                   <ul
                     class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block"
                   >
-                    <li class="active">
+                    <li >
                       <a class="nav-link text-left" href="index.html">Home</a>
                     </li>
-                    <li>
-                      <a class="nav-link text-left" href="index.html#free-walking-tours"
-                        >Free Walking Tours</a
-                      >
+
+                    <li >
+                      <a href="index.html#walking-tours" class="nav-link text-left" >Walking Tours</a>
                     </li>
+
                     <li>
-                      <a class="nav-link text-left" href="index.html#transfers"
-                        >Transfers</a
-                      >
+                      <a  href="index.html#transfers" class="nav-link text-left">Transfers</a>
                     </li>
+                    
                     <li>
-                      <a class="nav-link text-left" href="index.html#vehicles-charters"
-                        >Vehicles &amp; Charters</a
-                      >
-                    </li>
-                    <!-- <li><a href="gallery.html" class="nav-link text-left">Gallery</a></li> -->
-                    <li>
-                      <a class="nav-link text-left" href="index.html#faq"
-                        >FAQs</a
-                      >
-                    </li>
-                    <li>
-                      <a class="nav-link text-left" href="index.html#contact"
-                        >Contact
+                      <a>
+                         <img src="images/logo.jpg" style="width: 110px; height: 100px;" alt="Image" class="img-fluid" />
                       </a>
+          
+                    </li>
+
+                    <li>
+                      <a href="index.html#vehicles-charters" class="nav-link text-left" >Vehicles &amp; Charters</a>
+                    </li>
+
+                    <li>
+                      <a class="nav-link text-left" href="index.html#faq">FAQs</a>
+                    </li>
+                    <li>
+                      <a  href="booking.html"  class="nav-link text-left">Contact </a>
                     </li>
                   </ul>
                 </nav>
               </div>
             </div>
           </div>
-
-    </div>
+        </div>
     
     </div>
 
@@ -112,27 +111,33 @@
               <p><img src="images/hero_1.jpg" alt="Image" class="img-fluid"></p>
             </div> --> 
             <div class="col-md-12">
-              <span class="text-serif" style="color: #CC5500;">Book Now</span>
-              <h3 class="heading-92913 text-black">Make a booking</h3>
+
+
+              <div class="col-md-12 text-center" style="padding-top: 80px;">
+                <span id="transfersqns" class="text-serif" style="color: #CC5500;">Book Now</span>
+                <h3 class="heading-92913 text-black text-center">Make a booking</h3>
+              </div>
+
+
               <form method="POST" action="bookings.php" class="row">
                 <div class="form-group col-md-12">
                   <label for="input-5">Service You're Interested in:</label>
                   <select name="service" id="service" class="form-control">
-                    <option value="Toyota Coaster Series">Toyota Coaster Series</option>
-                    <option value="Mercedes Benz Series">Mercedes Benz Series</option>
-                    <option value="Toyota Quantum GL Series">Toyota Quantum GL Series</option>
-                    <option value="Toyota Rumion/Ertiga Series">Toyota Rumion/Ertiga Series</option>
+                    <option value="Guided Tour of Vic Falls">Guided Tour of Vic Falls</option>
+                    <option value="Charter Services">Charter Services</option>
+                    <option value="Private Transfers">Private Transfers</option>
+                    <option value="Custom Tours">Custom Tours</option>
                   </select>
                 </div>
 
                 <div class="form-group col-md-6">
-                  <label for="input-1">First Name:</label>
-                  <input type="text" class="form-control" name="firstname">
+                  <label for="input-1">Full Name:</label>
+                  <input type="text" class="form-control" name="fullname">
                 </div>
                 
                 <div class="form-group col-md-6">
-                  <label for="input-2">Last Name:</label>
-                  <input type="text" class="form-control" name="lastname">
+                  <label for="input-2">Company Name (Optional):</label>
+                  <input type="text" class="form-control" name="companyname">
                 </div>
   
                 <div class="form-group col-md-6">
@@ -152,6 +157,11 @@
                 <div class="form-group col-md-6">
                   <label for="input-7">Phone Number</label>
                   <input type="text" class="form-control" name="phone" id="">
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="input-1">Number of Pax</label>
+                  <input type="text" class="form-control" name="numberOfPax">
                 </div>
   
                   
@@ -239,6 +249,63 @@
 
 
   <script src="js/main.js"></script>
+
+
+
+  <script>
+  (function(){
+    function setActiveNav() {
+      const currentPath = location.pathname.replace(/\/$/, '').toLowerCase();
+      const currentHash = location.hash || '';
+      const pageId = document.body.dataset.page || '';
+
+      const selectors = '.site-menu a, .site-mobile-menu a, .site-mobile-menu-body a, .nav-link';
+      const links = Array.from(document.querySelectorAll(selectors));
+
+      // clear previous active states
+      links.forEach(a => {
+        a.classList.remove('active');
+        const li = a.closest('li'); if (li) li.classList.remove('active');
+      });
+
+      links.forEach(a => {
+        const href = (a.getAttribute('href') || '').trim();
+        if (!href) return;
+
+        // anchor links (#id) — match via data-page or exact hash
+        if (href.startsWith('#')) {
+          if (pageId && href.slice(1) === pageId) {
+            a.classList.add('active'); const li = a.closest('li'); if (li) li.classList.add('active');
+            return;
+          }
+          if (currentHash && href === currentHash) {
+            a.classList.add('active'); const li = a.closest('li'); if (li) li.classList.add('active');
+            return;
+          }
+          return;
+        }
+
+        try {
+          const url = new URL(href, location.href);
+          const hrefPath = url.pathname.replace(/\/$/, '').toLowerCase();
+          const hrefHash = url.hash || '';
+
+          if (hrefPath === currentPath) {
+            if (!hrefHash || hrefHash === currentHash) {
+              a.classList.add('active'); const li = a.closest('li'); if (li) li.classList.add('active');
+            }
+          }
+        } catch (e) {
+          // ignore malformed href
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', setActiveNav);
+    // run again on load in case nav is modified by other scripts
+    window.addEventListener('load', () => setTimeout(setActiveNav, 50));
+  })();
+  </script>
 
 </body>
 

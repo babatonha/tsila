@@ -5,26 +5,30 @@ composeMail();
 
     function composeMail(){
       $service = $_POST['service'];
-        $firstname =  $_POST['firstname'];
-        $lastname =  $_POST['lastname'];
+        $fullname =  $_POST['fullname'];
+        $companyname =  $_POST['companyname'];
         $numberOfPeople = $_POST['numberOfPeople'];
         $dateFrom = $_POST['dateFrom'];
         $dateTo = $_POST['dateTo'];
         $email = $_POST['emailAddress'];
         $phone = $_POST['phone'];
+        $numberOfPax = $_POST['numberOfPax'];
         $notes = $_POST['notes'];
 
         $message = "Customer Details:\r\n\r\n";
-        $message .= "First Name: " . $firstname . "\r\n";
-        $message .= "Last Name: " . $lastname . "\r\n";
+        $message .= "Full Name: " . $fullname . "\r\n";
+        $message .= "Company Name: " . $companyname . "\r\n";
         $message .= "Cell: " . $phone . "\r\n";
+        
       
 
         $message .= "Booking Details:\r\n\r\n";
         $message .= "Number of People: " . $numberOfPeople . "\r\n";
         $message .= "Date From: " . $dateFrom . "\r\n";
         $message .= "Date To: " . $dateTo . "\r\n";
+        $message .= "Number of Pax: " . $numberOfPax . "\r\n";
         $message .= "Service: " . $service . "\r\n\r\n";
+      
         
         
         $message .= "Other Details:\r\n\r\n";
