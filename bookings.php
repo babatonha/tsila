@@ -117,101 +117,57 @@ composeMail();
 
     
      <div class="header-top bg-light">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-6 col-lg-3">
-            <a href="index.html">
-              <img src="images/logo.png" alt="Image" class="img-fluid"> 
-              <!--
-              <strong style="color:#CC5500;">YOUR AFRICAN SUPER HOST!</strong>-->
-            </a>
-          </div>
-         
-          <div class="col-lg-3 d-none d-lg-block">
-            <div class="quick-contact-icons d-flex">
-              <div class=" align-self-start"> <!--class icon removed-->
-                  <!-- <span class="icon-location-arrow footerTextColor"></span>-->
-              </div>
-              <div class="text">
-                  <!-- <span class="h4 d-block">Cape Town</span>-->
-                  <!-- <span class="caption-text">Main offices</span>-->
-              </div>
-            </div>
-          </div>
 
-          <div class="col-lg-3 d-none d-lg-block">
-            <div class="quick-contact-icons d-flex">
-              <div class="icon align-self-start">
-                <span class="icon-phone footerTextColor"></span>
-              </div>
-              <div class="text">
-                <span class="h4 d-block">+263 71 274 9532</span>
-                <span class="caption-text">Call us</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 d-none d-lg-block">
-            <div class="quick-contact-icons d-flex">
-              <div class="icon align-self-start">
-                <span class="icon-envelope footerTextColor"></span>
-              </div>
-              <div class="text">
-                <span class="h4 d-block">info@tsilatourstransfers.com</span>
-                <span class="caption-text">Email any time</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 d-block d-lg-none text-right">
-              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                class="icon-menu h3"></span></a>
-          </div>
-        </div>
-      </div>
       
 
 
-         
-      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+        <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner" >
+          <div class="container">
+            <div class="d-flex align-items-center">
+              <div class="mx-auto">
+                <nav
+                  class="site-navigation position-relative text-right"
+                  role="navigation"
+                >
+                  <!-- ====== New Section: Menu ====== -->
+                  <ul
+                    class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block"
+                  >
+                    <li >
+                      <a class="nav-link text-left" href="index.html">Home</a>
+                    </li>
 
-        <div class="container">
-          <div class="d-flex align-items-center">
-            
-            <div class="mx-auto">
-              <nav class="site-navigation position-relative text-right" role="navigation">
-                <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
-                  <li >
-                    <a href="index.html" class="nav-link text-left">Home</a>
-                  </li>
-                  <li>
-                    <a href="freetour.html" class="nav-link text-left">Free Walking Tours</a>
-                  </li> 
+                    <li >
+                      <a href="index.html#walking-tours" class="nav-link text-left" >Walking Tours</a>
+                    </li>
 
-                  <li >
-                    <a href="transfers.html" class="nav-link text-left">Transfers</a>
-                  </li>
+                    <li>
+                      <a  href="index.html#transfers" class="nav-link text-left">Transfers</a>
+                    </li>
+                    
+                    <li>
+                      <a>
+                         <img src="images/logo.jpg" style="width: 110px; height: 100px;" alt="Image" class="img-fluid" />
+                      </a>
+          
+                    </li>
 
-                  <li class="active">
-                    <a href="charters.html" class="nav-link text-left">Charters</a>
-                  </li>
-                <!-- <li><a href="gallery.html" class="nav-link text-left">Gallery</a></li> --> 
-                <li>
-                  <a href="about.html" class="nav-link text-left">About Us</a>
-                </li>
-                  <li>
-                      <a href="contact.html" class="nav-link text-left">Contact</a>
-                  </li>
-                </ul>                                                       
-                
-              </nav>
-  
+                    <li>
+                      <a href="index.html#vehicles-charters" class="nav-link text-left" >Vehicles &amp; Charters</a>
+                    </li>
+
+                    <li>
+                      <a class="nav-link text-left" href="charterqns.html">FAQs</a>
+                    </li>
+                    <li>
+                      <a  href="index.html#contact"  class="nav-link text-left">Contact </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
             </div>
-           
           </div>
         </div>
-
-    </div>
     
     </div>
     
@@ -224,7 +180,7 @@ composeMail();
             <div class="col-lg-7 mx-auto text-center" data-aos="fade-up">
               <h1>Bookings</h1>
               <p>For any of your travel needs and your host will get back to you within 24 hour.</p>
-              <p><a href="contact.html" class="btn btnColor py-3 px-5">Contact</a></p>
+              <p><a href="index.html#contact" class="btn btnColor py-3 px-5">Contact</a></p>
             </div>
           </div>
         </div>
@@ -269,36 +225,7 @@ composeMail();
 
   <div class="footer bg-light">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-              <p class="mb-4"><img src="images/logo.png" alt="Image" class="img-fluid"></p>
-            <p>For any of your travel needs and your host will get back to you within 24 hours.</p>  
-            <p><a class="footerTextColor" href="transfers.html">More Details</a></p>
-          </div>
-          <div class="col-lg-3">
-            <h3 class="footer-heading"><span>Our Company</span></h3>
-            <ul class="list-unstyled">
-                <li><a class="footerTextColor" href="about.html">About</a></li>
-                <li><a class="footerTextColor" href="transfers.html">Services</a></li>
-                <li><a class="footerTextColor" href="about.html">Our Team</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Our Services</span></h3>
-              <ul class="list-unstyled">
-                  <li><a class="footerTextColor" href="freetour.html">Free walking Tours</a></li>
-                  <li><a class="footerTextColor" href="transfers.html">Transfers</a></li>
-                  <li><a class="footerTextColor" href="charters.html">Charters</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Contact</span></h3>
-              <ul class="list-unstyled ">
-                  <li><a class="footerTextColor"  href="contact.html">Help Center</a></li>
-             
-              </ul>
-          </div>
-        </div>
+   
 
         <div class="row">
           <div class="col-12">
