@@ -7,6 +7,8 @@ composeMail();
       $service = $_POST['service'];
         $fullname =  $_POST['fullname'];
         $companyname =  $_POST['companyname'];
+        $pickupLocation =  $_POST['pickupLocation'];
+        $dropoffLocation =  $_POST['dropoffLocation'];
         $numberOfPeople = $_POST['numberOfPeople'];
         $dateFrom = $_POST['dateFrom'];
         $dateTo = $_POST['dateTo'];
@@ -18,6 +20,8 @@ composeMail();
         $message = "Customer Details:\r\n\r\n";
         $message .= "Full Name: " . $fullname . "\r\n";
         $message .= "Company Name: " . $companyname . "\r\n";
+        $message .= "Pick Up Location: " . $pickupLocation . "\r\n";
+        $message .= "Drop Off Locatiion: " . $dropoffLocation . "\r\n";
         $message .= "Cell: " . $phone . "\r\n";
         
       
@@ -337,5 +341,6 @@ composeMail();
   <script src="js/main.js"></script>
 
 </body>
+
 
 </html>
